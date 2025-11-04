@@ -100,7 +100,6 @@ userSchema.methods.generateRefreshToken = function () {
 };
 
 userSchema.methods.generateTemporaryToken = function () {
-  
   const unHashedToken = crypto.randomBytes(20).toString("hex");
 
   const hashedToken = crypto
