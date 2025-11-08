@@ -8,7 +8,7 @@ const generateAccessAndRefreshTokens = async (userId) => {
   try {
     const user = await User.findById(userId);
     const accessToken = user.generateAccessToken();
-    const refreshToken = user.genrateRefreshToken();
+    const refreshToken = user.generateRefreshToken();
 
     user.refreshToken = refreshToken;
     await user.save({ validateBeforeSave: false });
@@ -79,7 +79,7 @@ const login = asyncHandler(async (req, res) => {
     throw new ApiError(400, "Email is required");
   }
 
-  const user = await user.findOne({ email });
+  const user = await User.findOne({ email });
 
   if (!user) {
     throw new ApiError(400, "User does not exists");
